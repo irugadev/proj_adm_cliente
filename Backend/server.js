@@ -1,19 +1,18 @@
 const express = require('express')
 const { Pool } = require('pg')
 const cors = require('cors')
-
 const app = express()
 const PORTA = 3000
 
 app.use(cors())
 app.use(express.json())
-
+// >>>>>>>>>>>>>>>> Conexao com o Banco de Dados Supabase SQL <<<<<<<<<<<<<<<
 const pool = new Pool({
-    host: 'https://niytkmvwhhldgxkzgvnk.supabase.co',
+    host: 'aws-1-us-east-2.pooler.supabase.com',
     database: 'postgres',
-    user: 'postgres',
+    user: 'postgres.niytkmvwhhldgxkzgvnk',
     password: 'adm_22.10.2025',
-    port: 5432,
+    port: 6543,
 })
 
 pool.connect((err, client, release) => {

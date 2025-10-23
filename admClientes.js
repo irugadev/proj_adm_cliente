@@ -36,6 +36,8 @@ const cardClasseC = document.getElementById('card-classe-c')
 function getHojeFormatado() {
     return new Date().toISOString().slice(0, 10)
 }
+
+// >>>>>>>> Esta funçao foi aproveitada do codigo gerado pela IA <<<<<<<<
 function validarCPF(cpf) {
     cpf = cpf.replace(/[^\d]+/g, '') 
     if (cpf === '' || cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
@@ -348,16 +350,19 @@ btnCancelar.addEventListener('click', () => {
 inputPesquisa.addEventListener('keyup', () => {
     renderizarTabelaClientes()
 })
+// >>>>>>>>>>>>>>>>>>>>> CONFIGURAÇAO PARA bOTOES EDITAR E EXCLUIR <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+tabelaClientesCorpo.addEventListener('click', async (e) => {
+    const elementoClicado = e.target
 
-tabelaClientesCorpo.addEventListener('click', async (e) => { 
-    const elementoClicado = e.targetr
+    // >>>>>> Se o clique foi em um botão de editar <<<<<<<
     if (elementoClicado.classList.contains('btn-editar')) {
         const id = elementoClicado.closest('tr').dataset.id
         await carregarClienteParaEdicao(id)
     }
     
+    // >>>>>>>>>> Se o clique foi em um botão de excluir <<<<<<<<<<<<<<
     if (elementoClicado.classList.contains('btn-excluir')) {
-        const id = elementoClicado.closest('tr').dataset.id
+        const id = elementoClicado.closest('tr').dataset.id;
         await excluirCliente(id)
     }
 })
